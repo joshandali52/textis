@@ -1,0 +1,427 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load base_tags %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'admin/assets/vendor/jbox/dist/jBox.all.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/custombox/custombox.min.css' %}">
+
+    <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-40">Word Compare</h1>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                <header class="card-header g-bg-lightblue-v4 g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-20--sm g-pb-10 g-pb-15--sm">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-white g-mr-10 mb-0">
+                            Term</h3><br>
+                        <h4>{{ word1 }}</h4>
+                    </div>
+                </header>
+                <div class="card-block g-pa-15 g-pa-30--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">
+                        <div id="scatterplot1"></div>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                <header class="card-header g-bg-teal-v2 g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-20--sm g-pb-10 g-pb-15--sm">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-white g-mr-10 mb-0">
+                            Term</h3><br>
+                        <h4>{{ word2 }}</h4>
+                    </div>
+                </header>
+                <div class="card-block g-pa-15 g-pa-30--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">
+                        <div id="scatterplot2"></div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                <header class="card-header g-bg-lightblue-v4 g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-20--sm g-pb-10 g-pb-15--sm">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-white g-mr-10 mb-0">
+                            Term</h3><br>
+                        <h4>{{ word1 }}</h4>
+                    </div>
+                </header>
+                <div class="card-block g-pa-15 g-pa-30--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">
+                        Count/Ad <b>{{ occWord1 }}</b><br>
+                        Count <b>{{ countWord1 }}</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                <header class="card-header g-bg-teal-v2 g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-20--sm g-pb-10 g-pb-15--sm">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-white g-mr-10 mb-0">
+                            Term</h3><br>
+                        <h4>{{ word2 }}</h4>
+                    </div>
+                </header>
+                <div class="card-block g-pa-15 g-pa-30--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">
+                        Count/Ad <b>{{ occWord2 }}</b><br>
+                        Count <b>{{ countWord2 }}</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if error %}
+        <div class="col-md-6">
+            <!-- Error -->
+            <div class="g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-20--md g-mb-30">
+                <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-black g-mb-20">
+                    Error</h3>
+
+                <div class="noty_bar noty_type__error noty_theme__unify--v1 g-mb-25">
+                    <div class="noty_body">
+                        <div class="g-mr-20">
+                            <div class="noty_body__icon">
+                                <i class="hs-admin-alert"></i>
+                            </div>
+                        </div>
+
+                        <div>{{ error }}</div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- End Error -->
+        </div>
+
+    {% else %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                    <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                        <div class="media">
+                            <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-lightblue-v3 g-mr-10 mb-0">
+                                Top 100 words based on PMI and window context   {{ word1 }}</h3>
+                            <div class="media-body d-flex justify-content-end">
+                            <a class="target-click u-icon-v2 u-icon-size--sm g-brd-lightblue-v3 g-brd-primary-dark-dark-v1--hover g-color-lightblue-v3 g-color-primary--hover g-rounded-50x"
+                               href="#!" id="Tooltip_Ass">
+                                <i class="hs-admin-help"></i>
+                            </a>
+                        </div>
+                        </div>
+                    </header>
+
+                    <div class="card-block g-pa-15 g-pa-30--sm">
+                        <div id="chart1"></div>
+                        <div id="explanation">Associations Strength</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                    <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                        <div class="media">
+                            <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-teal g-mr-10 mb-0">
+                                Top 100 words based on PMI and window context {{ word2 }}</h3>
+                            <div class="media-body d-flex justify-content-end">
+                            <a class="target-click u-icon-v2 u-icon-size--sm g-brd-lightblue-v3 g-brd-primary-dark-dark-v1--hover g-color-lightblue-v3 g-color-primary--hover g-rounded-50x"
+                               href="#!" id="Tooltip_Ass2">
+                                <i class="hs-admin-help"></i>
+                            </a>
+                        </div>
+                        </div>
+                    </header>
+
+                    <div class="card-block g-pa-15 g-pa-30--sm">
+                        <div id="chart2"></div>
+                        <div id="explanation">Associations Strength</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                    <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                        <div class="media">
+                            <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-lightblue-v3 g-mr-10 mb-0">
+                                Compounds containing '{{ word1 }}'</h3>
+                            <div class="media-body d-flex justify-content-end">
+                            <a class="target-click u-icon-v2 u-icon-size--sm g-brd-lightblue-v3 g-brd-primary-dark-dark-v1--hover g-color-lightblue-v3 g-color-primary--hover g-rounded-50x"
+                               href="#!" id="Tooltip_Compounds">
+                                <i class="hs-admin-help"></i>
+                            </a>
+                        </div>
+                        </div>
+                    </header>
+
+                    <div class="card-block g-pa-15 g-pa-30--sm">
+                        <div id="chart3"></div>
+                        {% if compWords1|length > 0 %}
+                            <div id="explanation">Frequency</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                    <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                        <div class="media">
+                            <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-teal g-mr-10 mb-0">
+                                Compounds containing '{{ word2 }}'</h3>
+                            <div class="media-body d-flex justify-content-end">
+                            <a class="target-click u-icon-v2 u-icon-size--sm g-brd-lightblue-v3 g-brd-primary-dark-dark-v1--hover g-color-lightblue-v3 g-color-primary--hover g-rounded-50x"
+                               href="#!" id="Tooltip_Compounds2">
+                                <i class="hs-admin-help"></i>
+                            </a>
+                        </div>
+                        </div>
+                    </header>
+
+                    <div class="card-block g-pa-15 g-pa-30--sm">
+                        <div id="chart4"></div>
+                        {% if compWords2|length > 0 %}
+                            <div id="explanation">Frequency</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                    <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                        <div class="media">
+                            <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-lightblue-v3 g-mr-10 mb-0">
+                                Word Frequency list associated with '{{ word1 }}'</h3>
+                            <div class="media-body d-flex justify-content-end">
+                                <a class="target-click u-icon-v2 u-icon-size--sm g-brd-lightblue-v3 g-brd-primary-dark-dark-v1--hover g-color-lightblue-v3 g-color-primary--hover g-rounded-50x"
+                                   href="#!" id="Tooltip_Frequency">
+                                    <i class="hs-admin-help"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="card-block g-pa-15 g-pa-30--sm">
+                        <div id="chart1freq"></div>
+                        <div id="explanation">Frequency</div>
+                        <!-- HTML to write -->
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                    <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                        <div class="media">
+                            <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-lightblue-v3 g-mr-10 mb-0">
+                                Word Frequency list associated with '{{ word2 }}'</h3>
+                            <div class="media-body d-flex justify-content-end">
+                                <a class="target-click u-icon-v2 u-icon-size--sm g-brd-lightblue-v3 g-brd-primary-dark-dark-v1--hover g-color-lightblue-v3 g-color-primary--hover g-rounded-50x"
+                                   href="#!" id="Tooltip_Frequency2">
+                                    <i class="hs-admin-help"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="card-block g-pa-15 g-pa-30--sm">
+                        <div id="chart2freq"></div>
+                        <div id="explanation">Frequency</div>
+                        <!-- HTML to write -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <div class="row">
+            <div class="col-md-6">
+                <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30 jobadds">
+                    <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                        <div class="media">
+                            <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-lightblue-v3 g-mr-10 mb-0">
+                                Job ads snippets {{ word1 }}</h3>
+                        </div>
+                    </header>
+
+                    <div class="card-block g-pa-15 g-pa-30--sm">
+                         <div class="g-font-weight-300 g-color-gray-dark-v6 mb-0">
+                            {% if word1 %}
+                                {% for add in jobads1 %}
+                                    {{ add.short|safe }} ...
+                                    <a class="" href="#modal1" data-modal-target="#modal1_{{ forloop.counter }}" data-modal-effect="fadein">show full add</a><br>
+                                    <!-- Demo modal window -->
+                                    <div id="modal1_{{ forloop.counter }}" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20"
+                                         style="display: none;">
+                                        <button type="button" class="close" onclick="Custombox.modal.close();">
+                                            <i class="hs-icon hs-icon-close"></i>
+                                        </button>
+                                        <h4 class="g-mb-20">Full text job add</h4>
+                                        <p>{{ add.full|safe|linebreaks }}</p>
+                                    </div>
+                                    <!-- End Demo modal window -->
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30 jobadds">
+                    <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                        <div class="media">
+                            <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-teal g-mr-10 mb-0">
+                                Job ads snippets {{ word2 }}</h3>
+                        </div>
+                    </header>
+
+                    <div class="card-block g-pa-15 g-pa-30--sm">
+                         <div class="g-font-weight-300 g-color-gray-dark-v6 mb-0">
+                            {% if word2 %}
+                                {% for add in jobads2 %}
+                                    {{ add.short|safe }} ...
+                                    <a class="" href="#modal1" data-modal-target="#modal2_{{ forloop.counter }}" data-modal-effect="fadein">show full add</a><br>
+                                    <!-- Demo modal window -->
+                                    <div id="modal2_{{ forloop.counter }}" class="text-left g-max-width-600 g-bg-white g-overflow-y-auto g-pa-20"
+                                         style="display: none;">
+                                        <button type="button" class="close" onclick="Custombox.modal.close();">
+                                            <i class="hs-icon hs-icon-close"></i>
+                                        </button>
+                                        <h4 class="g-mb-20">Full text job add</h4>
+                                        <p>{{ add.full|safe|linebreaks }}</p>
+                                    </div>
+                                    <!-- End Demo modal window -->
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+
+{% block jscript %}
+    <script src="{% static 'barchart.js' %}"></script>
+    <script src="{% static 'scatter.js' %}"></script>
+    <script src="{% static 'admin/assets/vendor/jbox/dist/jBox.js' %}"></script>
+    <script src="{% static 'admin/assets/vendor/jbox/Demo/Demo.js' %}"></script>
+
+       <!-- JS Implementing Plugins -->
+    <script src="{% static 'assets/vendor/custombox/custombox.min.js' %}"></script>
+
+    <!-- JS Unify -->
+    <script src="{% static 'assets/js/components/hs.modal-window.js' %}"></script>
+
+    <!-- JS Plugins Init. -->
+    <script>
+        $(document).on('ready', function () {
+            // initialization of popups
+            $.HSCore.components.HSModalWindow.init('[data-modal-target]');
+        });
+    </script>
+
+    <!-- documentation see here: http://blockbuilder.org/ufenegga/65931549f39f4a0d5249366581157fb1 -->
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script>
+        var counts = {{ wordCounts|safe }};
+
+        data_bar1 = [
+            {% for value in bar1 %}
+                {% if value.word != '\\' %}
+                    {letter: "{{ value.word }} (n=" + counts['{{ value.word }}'] + ")", col1: {{ value.val }}, col2: {{ value.otherval }}},
+                {% endif %}
+            {% endfor %}
+        ];
+        newBarChart(data_bar1, "chart1", "bar1", "bar2", true);
+
+        var data_bar2 = [
+            {% for value in bar2 %}
+                {% if value.word != '\\' %}
+                    {letter: "{{ value.word }} (n=" + counts['{{ value.word }}'] + ")", col1: {{ value.val }}, col2: {{ value.otherval }}},
+                {% endif %}
+            {% endfor %}
+        ];
+        newBarChart(data_bar2, "chart2", "bar2", "bar1", true);
+
+        var data_bar3 = [
+            {% for word, count in compWords1.items %}
+                {letter: "{{ word }} (n=" + counts['{{ word }}'] + ")", col1: {{ count }}},
+            {% endfor %}
+        ];
+        {% if compWords1|length > 0 %}
+            newBarChart(data_bar3, "chart3", "bar1");
+        {% endif %}
+
+        var data_bar4 = [
+            {% for word, count in compWords2.items %}
+                {letter: "{{ word }} (n=" + counts['{{ word }}'] + ")", col1: {{ count }}},
+            {% endfor %}
+        ];
+        {% if compWords2|length > 0 %}
+            newBarChart(data_bar4, "chart4", "bar2");
+        {% endif %}
+
+        var data_bar1freq = [
+            {% for value in bar1 %}
+                {% if value.word != '\\' %}
+                    {letter: "{{ value.word }} (n={{ value.val|format:"{:0.3f}" }})", col1: counts['{{ value.word }}']},
+                {% endif %}
+            {% endfor %}
+        ];
+        newBarChart(data_bar1freq, "chart1freq", "bar1");
+
+        var data_bar2freq = [
+            {% for value in bar2 %}
+                {% if value.word != '\\' %}
+                    {letter: "{{ value.word }} (n={{ value.val|format:"{:0.3f}" }})", col1: counts['{{ value.word }}']},
+                {% endif %}
+            {% endfor %}
+        ];
+        newBarChart(data_bar2freq, "chart2freq", "bar1");
+
+
+        var data_scatter1 = [
+            {% for value in scatterList1 %}
+                {% if value.word != '\\' %}
+                    { letter: "{{ value.word }}", size: {{ value.size }}, edge: {{ value.edge }} },
+                {% endif %}
+            {% endfor %}
+        ];
+        textisscatterd3(data_scatter1, "#scatterplot1");
+
+         var data_scatter2 = [
+            {% for value in scatterList2 %}
+                {% if value.word != '\\' %}
+                    { letter: "{{ value.word }}", size: {{ value.size }}, edge: {{ value.edge }} },
+                {% endif %}
+            {% endfor %}
+        ];
+        textisscatterd3(data_scatter2, "#scatterplot2");
+
+        //alert($('text:contains("python")').html());
+    </script>
+{% endblock %}

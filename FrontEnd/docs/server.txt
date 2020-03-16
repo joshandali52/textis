@@ -1,0 +1,9 @@
+This app is running on the uni webserver:
+ssh mgau@193.5.27.56
+
+location:
+/home/www/textis/FrontEnd/webapp
+
+restart:
+./run stop
+./run start

@@ -1,0 +1,103 @@
+h1 {
+    color: green;
+}
+
+a:not([href]):not([tabindex]) {
+    color: #e62154;
+    cursor: pointer;
+}
+
+.x_axis path {
+    display: none;
+}
+
+.y_axis .tick text {
+    display: none;
+}
+
+.bar1 {
+    fill: #3dd1e8;
+    opacity: 0.5;
+}
+
+.bar2 {
+    fill: #15d3b2;
+    opacity: 0.5;
+}
+
+.brush .extent {
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
+}
+
+.resize {
+    display: inline !important; /* show when empty */
+    fill: #7A7A7A;
+    fill-opacity: 1;
+    stroke: #7A7A7A;
+    stroke-width: 2px;
+}
+
+/* Paste this css to your style sheet file or under head tag */
+/* This only works with JavaScript,
+if it's not present, don't show loader */
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+    opacity: .8;
+	background: url(assets/Preloader_3.gif) center no-repeat #fff;
+}
+
+.highlight {
+    font-weight: bold;
+}
+
+.jobadds {
+    height: 500px;
+    overflow:auto;
+}
+
+.scatteraxis path,
+.scatteraxis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.dot {
+    stroke: #000;
+    fill: #3dd1e8;
+}
+
+
+.scattertext {
+    fill: darkgray;
+}
+
+/*
+.scattertext:hover {
+    font-size: 1.3em;
+    fill: black;
+}
+*/
+
+.scattertext_hover {
+    font-size: 1.3em;
+    fill: black;
+}
+
+.scatteraxis > .tick, .label {
+    font-size: 1.3em;
+}
+
+.selectedword {
+    font-size: 1.3em;
+    fill: #e62154;
+    font-weight: bold;
+}

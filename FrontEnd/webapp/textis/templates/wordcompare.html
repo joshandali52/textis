@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-40">Words Compare</h1>
+
+<div class="row">
+      <div class="col-md-12">
+        <form id="form1" method="POST">{% csrf_token %}
+        <div class="g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-20--md g-mb-30">
+            <div class="row">
+            <div class="col-md-5">
+                <div class="form-group g-mb-30">
+                      <label class="g-mb-10" for="inputGroup-1_2">Enter first Word</label>
+                      <div class="g-pos-rel">
+                          <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-50 h-100">
+                            <i class="hs-admin-text g-absolute-centered g-font-size-16 g-color-gray-light-v6"></i>
+                          </span>
+                          <input id="{{ form.word1.id_for_label }}" name="{{ form.word1.html_name }}" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10" type="text" placeholder="">{% if form.word1.value != None %}{{ form.word1.value }}{% endif %}
+                      </div>
+
+                      <small class="form-text text-muted g-font-size-default g-mt-10">
+                        <strong>Example:</strong> Python
+                      </small>
+                </div>
+            </div>
+
+            <div class="offset-md-2 col-md-5">
+                <div class="form-group g-mb-30">
+                      <label class="g-mb-10" for="inputGroup-1_2">Enter second Word</label>
+                      <div class="g-pos-rel">
+                          <span class="g-pos-abs g-top-0 g-right-0 d-block g-width-50 h-100">
+                            <i class="hs-admin-text g-absolute-centered g-font-size-16 g-color-gray-light-v6"></i>
+                          </span>
+                          <input id="{{ form.word2.id_for_label }}" name="{{ form.word2.html_name }}" class="form-control form-control-md g-brd-gray-light-v7 g-brd-gray-light-v3--focus g-rounded-4 g-px-14 g-py-10" type="text" placeholder="">{% if form.word2.value != None %}{{ form.word2.value }}{% endif %}
+                      </div>
+
+                      <small class="form-text text-muted g-font-size-default g-mt-10">
+                        <strong>Example:</strong> R
+                      </small>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    </form>
+  </div>
+
+
+
+
+    <div class="col-md-12">
+        <button form="form1" type="submit" class="pull-right btn btn-lg u-btn-outline-primary u-btn-hover-v1-1 g-mr-10 g-mb-15" value="Submit">Compare</button>
+
+    </div>
+</div>
+
+{% endblock %}

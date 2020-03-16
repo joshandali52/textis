@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="se-pre-con"></div>
+
+    <h1 class="g-font-weight-300 g-font-size-28 g-color-black g-mb-40">Word Tree</h1>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                <header class="card-header g-bg-lightblue-v4 g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-20--sm g-pb-10 g-pb-15--sm">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-white g-mr-10 mb-0">
+                            Term</h3><br>
+                        <h4>{{ word }}</h4>
+                    </div>
+                </header>
+                <div class="card-block g-pa-15 g-pa-30--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">
+                        Count/Ad <b>{{ occWord }}</b><br>
+                        Count <b>{{ countWord1 }}</b>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {% if error or dataAssTreeWin is None %}
+        <div class="col-md-12">
+            <!-- Error -->
+            <div class="g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-20--md g-mb-30">
+                <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-black g-mb-20">
+                    Error</h3>
+
+                <div class="noty_bar noty_type__error noty_theme__unify--v1 g-mb-25">
+                    <div class="noty_body">
+                        <div class="g-mr-20">
+                            <div class="noty_body__icon">
+                                <i class="hs-admin-alert"></i>
+                            </div>
+                        </div>
+
+                        <div>{{ error }}</div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- End Error -->
+        </div>
+
+    {% else %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                    <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                        <div class="media">
+                            <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-lightblue-v3 g-mr-10 mb-0">
+                                Top 100 associated words {{ word1 }} clustered by surprise (PMI) and window scope</h3>
+                        </div>
+                    </header>
+
+                    <div class="card-block g-pa-15 g-pa-30--sm">
+                        <div id="chart1" style="overflow: auto;"></div>
+                        <div id="explanation">Click on the filled blue circles to open the node in the tree.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% comment %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                    <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                        <div class="media">
+                            <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-lightblue-v3 g-mr-10 mb-0">
+                                Top 100 associated words {{ word1 }} clustered by frequencies (probabilities) of co-occurrence and window scope</h3>
+                        </div>
+                    </header>
+
+                    <div class="card-block g-pa-15 g-pa-30--sm">
+                        <div id="chart2" style="overflow: auto;"></div>
+                        <div id="explanation">Click on the filled blue circles to open the node in the tree.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                    <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                        <div class="media">
+                            <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-lightblue-v3 g-mr-10 mb-0">
+                                Top 100 associated words {{ word1 }} clustered by surprise (PMI) and document scope</h3>
+                        </div>
+                    </header>
+
+                    <div class="card-block g-pa-15 g-pa-30--sm">
+                        <div id="chart3" style="overflow: auto;"></div>
+                        <div id="explanation">Click on the filled blue circles to open the node in the tree.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                    <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                        <div class="media">
+                            <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-lightblue-v3 g-mr-10 mb-0">
+                                Top 100 associated words {{ word1 }} clustered by frequencies (probabilities) of co-occurrence and document scope</h3>
+                        </div>
+                    </header>
+
+                    <div class="card-block g-pa-15 g-pa-30--sm">
+                        <div id="chart4" style="overflow: auto;"></div>
+                        <div id="explanation">Click on the filled blue circles to open the node in the tree.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endcomment %}
+    {% endif %}
+{% endblock %}
+
+
+{% block jscript %}
+    <script src="{% static 'tree.js' %}"></script>
+
+    <style>
+        .node circle {
+            fill: #fff;
+            stroke: steelblue;
+            stroke-width: 1.5px;
+        }
+
+        .node {
+            font: 15px sans-serif;
+        }
+
+        .link {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 1.5px;
+        }
+
+        .tooltip {
+            position: absolute;
+            text-align: left;
+            max-width: 1000px;
+            padding: 10px;
+            font: 12px sans-serif;
+            background: rgba(218, 228, 235, 1) !important;
+            border: 0px;
+            border-radius: 8px;
+            pointer-events: none;
+        }
+    </style>
+    <!-- documentation see here: http://blockbuilder.org/ufenegga/65931549f39f4a0d5249366581157fb1 -->
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script>
+        $(window).load(function () {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");
+            ;
+        });
+
+        {% if dataAssTreeWin != None %}
+            var compWords = {{ compWords|safe }};
+            var counts = {{ wordCounts|safe }};
+            var phrases = {{ longPhrases|safe }};
+
+            //Association tree with window scope
+            var treeData1 = [{{ dataAssTreeWin|safe }}];
+            var chartContainer1 = "#chart1";
+
+            createTree(chartContainer1, treeData1, phrases, compWords)
+        {% endif %}
+
+        {% comment %}
+        {% if dataAssAbsTreeWin != None %}
+            //Association tree with absolut window scope
+            var treeData2= [{{ dataAssAbsTreeWin|safe }}];
+            var chartContainer2 = "#chart2";
+
+            createTree(chartContainer2, treeData2, phrases, compWords)
+        {% endif %}
+
+        {% if dataAssTreeDoc != None %}
+            //Association tree with document scope
+            var treeData3= [{{ dataAssTreeDoc|safe }}];
+            var chartContainer3 = "#chart3";
+
+            createTree(chartContainer3, treeData3, phrases, compWords)
+        {% endif %}
+
+        {% if dataAssAbsTreeDoc != None %}
+            //Association tree with absolut docuemnt scope
+            var treeData4 = [{{ dataAssAbsTreeDoc|safe }}];
+            var chartContainer4 = "#chart4";
+
+            createTree(chartContainer4, treeData4, phrases, compWords)
+        {% endif %}
+        {% endcomment %}
+
+    </script>
+{% endblock %}
