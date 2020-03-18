@@ -3,7 +3,7 @@
 @institution: University of Liechtenstein, Fuerst-Franz-Josef Strasse 21, 9490 Vaduz, Liechtenstein
 @funding: European Commission, part of an Erasmus+ project (Project Reference: 2017-1-LI01-KA203-000083)
 @copyright: Copyright (c) 2020, Michael Gau, Joshua Peter Handali, Johannes Schneider
-@license : Academic Free License ("AFL") v. 3.0
+@license : BSD-2-Clause
 
 When using (any part) of this software, please cite our paper:
 [JOBADS PAPER] 
