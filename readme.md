@@ -1,10 +1,10 @@
-#TextIs
+# TextIs
 TODO: Introduction
 
 TODO: Documentation
 The documentation is hosted at ...
 
-#Installation
+# Installation
 Install python. We developed and tested the project with python3.8:
 https://www.python.org/downloads/
 
@@ -19,7 +19,7 @@ Install all packages using pip in the FrontEnd/requirements.txt
 TODO: HowTo generate data files...
 describe howto, paths, nltk setup, ...
 
-#Usage
+# Usage
 The visualization is implemented as a wep application base on django 3.0. For more details read the official docs (https://docs.djangoproject.com/en/3.0/).
 Change into the following directory:
 ```
@@ -32,5 +32,5 @@ Start the development server locally
 Open in a web browser the following URL:
 http://127.0.0.1:8000/textis/
 
-#License
+# License
 TODO: define licence
