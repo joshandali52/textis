@@ -1,0 +1,3 @@
+﻿
+    SAP FICO Data Migration and business analyst - S.E.England.  My client in the South-East of England is looking for a SAP FICO Data Migration Consultant.  The ideal candidate will have a strong experience in SAP FICO ECC6 (AP, AR, GL, Rebates) etc as well as a track-record of successfully migrating the main FICO objects in a SAP implementation.  This role sits in the Data team however it is extremely client facing dealing with the users and business regularly.  Must have skills are SAP FICO ECC6 and excellent communication.  Nice to have are strong LSMW, ETL tool experience, ABAP/BAPI/IDOC and any other 'core' SAP module expertise. 
+  
