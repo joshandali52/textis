@@ -23,7 +23,6 @@ import pickle
 import os
 
 
-
 def parseAnnotated(doc):
     
     """
@@ -142,13 +141,13 @@ def runTrial(tarStr, docs, fname):
            ntsc += len(y_test)
            #store full model
            m.fit(X, y)
-           pickle.dump([count_vect, tfidf_transformer, enc, m], open(fname+str(m)[:3]+".pic", 'wb'))
+           pickle.dump([count_vect, tfidf_transformer, enc, m], open('cleaning/'+fname+str(m)[:3]+".pic", 'wb'))
         print("training", np.round(tok/tsc,2) if tsc > 0 else -1, tsc, " test", np.round(ntok/ntsc, 2), ntsc)
 
 
 def getClassifier(retrain=False):
     if retrain or not os.path.exists("cleaning/irrelevantClassifier_Ran.pic"): #Train and store classifier
-        text = 'classifier_TrainAndTestData.txt'
+        text = 'cleaning/classifier_TrainAndTestData.txt'
         parsed = parseAnnotated(text)
         docs, tarStr = [], []
         toRemove = ['\xa0', '>']
@@ -174,7 +173,7 @@ def getClassifier(retrain=False):
         from collections import Counter
         print(Counter(tarStr))
         newTar = ["excl" if k == "otir" or k == "unc" or k == "eqop" or k == "code" else "incl" for k in tarStr]
-        runTrial(newTar, docs, "inexclassifier_")
+        runTrial(newTar, docs, "irrelevantClassifier_")
         fdat = [(t, d) for t, d in zip(tarStr, docs) if not (t == "otir" or t == "unc" or t == "eqop" or t == "code")]
         runTrial([t for t, _ in fdat], [d for _, d in fdat], "restclassifier_")
 

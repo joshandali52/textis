@@ -29,11 +29,11 @@ class Cfg:
     self.longMaxPhrPerWord = 200 #max contexts per word
 
     #self.dataPath = "/Users/michaelgau/Documents/workspace/textis/data/"  if self.isLocal else "../../data/"#on server check: /mnt/data3/currData/
-    self.dataPath = "data/"
+    self.dataPath = "../data/"
 
     #parameters BackEnd
     #self.rpath = "C:/Users/jschneid/MYDATA/Liecht/Various/ErasmusPlus/data/" if self.isLocal else "/mnt/data2/public/jobads/" #"/mnt/data3/public/currData/"
-    self.rpath = "data/"
+    self.rpath = "../data/"
 
     #create only small files, this is fast for debugging
     self.isBackendDummy = isBackendDummy

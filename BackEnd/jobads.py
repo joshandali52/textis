@@ -13,7 +13,7 @@ When using (any part) of this software, please cite our paper:
 import multiprocessing as mp
 import sys,os,glob
 sys.path.append(os.getcwd()+"/../")
-print("Current Rootpath", os.getcwd()+"../") #Copy results to /mnt/data3/public/currData/.
+print("Current Rootpath", os.getcwd()+"../")
 import numpy as np
 import operator
 import pickle
@@ -345,7 +345,7 @@ def getText(html, splitter="\n"):
 
     #Remove HTML
     html = html.replace("</li>", "\n ").replace("</br>", "\n ").replace("<br/>", "\n ").replace("</p>", "\n ").replace("&#13", "\n ")  # replace things that indicate a new paragraph by return
-    soup = BeautifulSoup(html, "html5lib")
+    soup = BeautifulSoup(html, "html.parser")
     data = soup.findAll(text=True)
     def visible(element):
         if element.parent.name in ['style', 'script', '[document]', 'head', 'title']: return False
