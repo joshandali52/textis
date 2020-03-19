@@ -393,7 +393,8 @@ def cleanJobAd(dat):
     cpath, outname, rawp = dat
     with open(cpath, "r", encoding="utf8") as f:
         html = f.read()
-        splitter = "\n\n" if "original_text_without" in rawp else "\n"  #
+        #splitter = "\n\n" if "original_text_without" in rawp else "\n"  #
+        splitter = "\n"
         text = getText(html, splitter)
         text = text.split("View more info")[0]
         #print("\n<newad><fname,"+cpath+">\n", text) #for training of classification
@@ -424,21 +425,20 @@ def cleanJobAds(Config):
 
     #create job list, ie. path with all files to be cleaned
     joblist = []
-    for rawp in Config.rawPaths:
-        outdir = Config.fpath+Config.cleanedPath
-        for subdir, dirs, files in os.walk(rawp): #clean files
-            if len(Config.terms)!= 0:
-                isIn=[t.upper() in subdir.upper() for t in Config.terms]
-                if sum(isIn) == 0: continue
-            for file in files:
-                if file.endswith("html") or file.endswith("htm") or file.endswith("txt"):
-                    cpath= os.path.join(subdir, file)
-                    if Config.cleanedPath[:-1] in subdir:
-                        print("Skip", subdir)
-                        break
-                    outname = outdir+"jobad"+str(len(joblist))+".txt"
-                    joblist.append([cpath, outname, rawp, ])
-                    if len(joblist) > 1.5*Config.nDoc: break #limit files to clean, some will be redundant
+    outdir = Config.fpath+Config.cleanedPath
+    for subdir, dirs, files in os.walk(Config.rpath): #clean files
+        if len(Config.terms)!= 0:
+            isIn=[t.upper() in subdir.upper() for t in Config.terms]
+            if sum(isIn) == 0: continue
+        for file in files:
+            if file.endswith("html") or file.endswith("htm") or file.endswith("txt"):
+                cpath= os.path.join(subdir, file)
+                if Config.cleanedPath[:-1] in subdir:
+                    print("Skip", subdir)
+                    break
+                outname = outdir+"jobad"+str(len(joblist))+".txt"
+                joblist.append([cpath, outname, Config.rpath, ])
+                if len(joblist) > 1.5*Config.nDoc: break #limit files to clean, some will be redundant
 
     print("Read docs/ads", len(joblist))
     pool = mp.Pool(processes=Config.nProc)

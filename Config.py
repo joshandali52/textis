@@ -13,7 +13,7 @@ import multiprocessing as mp
 
 class Cfg:
    def __init__(self, isBackendDummy = True):
-    self.isLocal = mp.cpu_count()<9
+    #self.isLocal = mp.cpu_count()<9
     #parameters FrontEnd
     self.assWords=5 #number of words to left and right in hoverdata
     #assThres=0.00002
@@ -28,16 +28,16 @@ class Cfg:
     self.longphrwid = 10 #number of words per context
     self.longMaxPhrPerWord = 200 #max contexts per word
 
-    self.dataPath = "/Users/michaelgau/Documents/workspace/textis/data/"  if self.isLocal else "../../data/"#on server check: /mnt/data3/currData/
+    #self.dataPath = "/Users/michaelgau/Documents/workspace/textis/data/"  if self.isLocal else "../../data/"#on server check: /mnt/data3/currData/
+    self.dataPath = "data/"
 
     #parameters BackEnd
-    self.rpath = "C:/Users/jschneid/MYDATA/Liecht/Various/ErasmusPlus/data/" if self.isLocal else "/mnt/data2/public/jobads/" #"/mnt/data3/public/currData/"
+    #self.rpath = "C:/Users/jschneid/MYDATA/Liecht/Various/ErasmusPlus/data/" if self.isLocal else "/mnt/data2/public/jobads/" #"/mnt/data3/public/currData/"
+    self.rpath = "data/"
 
-     #create only small files, this is fast for debugging
+    #create only small files, this is fast for debugging
     self.isBackendDummy = isBackendDummy
-    # self.isBackendDummy = False
     self.fpath = self.rpath + "results/website/"
-    #self.fpath = self.rpath + "results/tmp/"
     self.fpath += "allData/" if not self.isBackendDummy else "dummyData/"
     self.fending = "_dummy" if self.isBackendDummy else ""
     self.nDoc=15000 if not self.isBackendDummy else 20
@@ -47,7 +47,6 @@ class Cfg:
     self.maxWordsCoocc = 500 if not self.isBackendDummy else 30 #maximum number of words in a job ad so that compute all pairwise co-occ
     self.overviewMaxMissAssociations = 140 if not self.isBackendDummy else 40 #number of associations shown
     self.nProc=7
-    self.rawPaths=[self.rpath+"jobads2018/",self.rpath+"jobads2018Part2_is/",self.rpath+"jobads2019_is/"] #,self.rpath+"original_text_without_duplicates/"
     self.terms=[] #restrict to certain search terms
     #rawPaths=[fpath+"original_text_without_duplicates/"]
     self.cleanedPath="cleanedAll" + self.fending + "/"
@@ -70,7 +69,7 @@ class Cfg:
     self.globalDat="globDat" #sum overall info, eg. #docs
 
     #Stanford Dependency Parser (needed to get compounds), see https://github.com/Lynten/stanford-corenlp
-    self.parserPath = r'/home/wi-admin/stanford-corenlp-full-2018-02-27/'
+    self.parserPath = r'C:/apps/anaconda3/Lib/site-packages/stanfordcorenlp/'
 
     #cooccurrence data
     self.coiTowname = "coiTow" #mapping index to word  for co-occurrence data, e.g. coiTowname[0]="data" meaning that value 0 is mapped to "data"
