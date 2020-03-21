@@ -11,9 +11,10 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".
 import Config as Conf
 import pickle as pl
 
-useDummyData=True
-#useDummyData=False
+#useDummyData=True
+useDummyData=False
 Conf = Conf.Cfg(useDummyData)
+#Conf.rpath = "../../data/"
 
 compwords = dict()
 wToL = dict()
@@ -33,11 +34,10 @@ class TextisConfig(AppConfig):
 #######################################################
 
 def printDict(rawName, samples=5):
-    fname = Conf.fpath + rawName + Conf.fending + ".pic"
+    fname = '../' + Conf.fpath + rawName + Conf.fending + ".pic"
     with open(fname, "rb") as f:
         data = pl.load(f)
         return data
-
 
 printDict(Conf.iTowname)
 wToL = printDict(Conf.wToLemmaname)
