@@ -33,7 +33,7 @@ class TextisConfig(AppConfig):
 #######################################################
 
 def printDict(rawName, samples=5):
-    fname = Conf.dataPath + rawName + Conf.fending + ".pic"
+    fname = Conf.fpath + rawName + Conf.fending + ".pic"
     with open(fname, "rb") as f:
         data = pl.load(f)
         return data
