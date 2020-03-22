@@ -22,18 +22,19 @@ Install all packages using pip in the FrontEnd/requirements.txt
 > pip install -r FrontEnd/requirements.txt 
 ```
 
-TODO: HowTo generate data files...
+TODO: ntlk setup
 
-Change into the following directory:
+Set path of the raw data (html files) in Config.py (rpath). In this repository we provided an example dataset in the data folder and set the rpath variable as follows:
+```
+self.rpath = "../data/"
+```
+
+Generate files necessary for the web application and return to the root directory:
 ```
 > cd BackEnd
-```
-Generate files necessary for the web application and return to the root directory.
-```
 > python generateFrontEndFiles.py
 > cd ..
 ```
-describe howto, paths, nltk setup, ...
 
 # Usage
 The visualization is implemented as a wep application base on django 3.0. For more details read the official docs (https://docs.djangoproject.com/en/3.0/).
