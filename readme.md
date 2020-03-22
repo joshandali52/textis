@@ -1,5 +1,6 @@
 # TextIs
-TODO: Introduction
+TextIS is a text mining tool developed to support the curriculum design process described in http://www.curriculum-design.uni.li/.
+This tool is part of the Erasmus+ project ["Text Mining for Curriculum Design for Multiple Information Systems Disciplines"](https://ec.europa.eu/programmes/erasmus-plus/projects/eplus-project-details/#project/2017-1-LI01-KA203-000083)
 
 TODO: Documentation
 The documentation is hosted at ...
