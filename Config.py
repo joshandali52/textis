@@ -48,6 +48,7 @@ class Cfg:
     self.overviewMaxMissAssociations = 140 if not self.isBackendDummy else 40 #number of associations shown
     self.nProc=7
     self.terms=[] #restrict to certain search terms
+    self.rawPaths=[self.rpath+"raw/"] #,self.rpath+"original_text_without_duplicates/"
     #rawPaths=[fpath+"original_text_without_duplicates/"]
     self.cleanedPath="cleanedAll" + self.fending + "/"
 
