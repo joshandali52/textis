@@ -19,10 +19,19 @@ https://docs.python.org/3/library/venv.html
 
 Install all packages using pip in the FrontEnd/requirements.txt
 ```
->pip install -r FrontEnd/requirements.txt 
+> pip install -r FrontEnd/requirements.txt 
 ```
 
 TODO: HowTo generate data files...
+
+Change into the following directory:
+```
+> cd BackEnd
+```
+Generate files necessary for the web application.
+```
+> python generateFrontEndFiles.py
+```
 describe howto, paths, nltk setup, ...
 
 # Usage
