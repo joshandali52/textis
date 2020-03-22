@@ -1,9 +1,14 @@
 # TextIs
-TextIS is a text mining tool developed to support the curriculum design process described in http://www.curriculum-design.uni.li/.
-This tool is part of the Erasmus+ project ["Text Mining for Curriculum Design for Multiple Information Systems Disciplines"](https://ec.europa.eu/programmes/erasmus-plus/projects/eplus-project-details/#project/2017-1-LI01-KA203-000083)
+This is repository for the text mining tool developed to support the curriculum design process described in http://www.curriculum-design.uni.li/. The tool is developed to perform text analysis on a corpus (html files) of online job advertisements. Other types of texts, however, can also be used as valid data source. It is part of the Erasmus+ project ["Text Mining for Curriculum Design for Multiple Information Systems Disciplines"](https://ec.europa.eu/programmes/erasmus-plus/projects/eplus-project-details/#project/2017-1-LI01-KA203-000083).
+
+We provided two modules: BackEnd and FrontEnd.
+
+BackEnd codes provide the necessary data (html files) preprocessing and our implementation of the text mining methods (eg. clustering).
+
+FrontEnd codes provided the means to setup the web application for visualizations to aid the text analysis process of the curriculum design process.
 
 TODO: Documentation
-The documentation is hosted at ...
+Full documentation of the tool is available at ...
 
 # Installation
 Install python. We developed and tested the project with python3.8:
