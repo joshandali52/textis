@@ -28,9 +28,10 @@ Change into the following directory:
 ```
 > cd BackEnd
 ```
-Generate files necessary for the web application.
+Generate files necessary for the web application and return to the root directory.
 ```
 > python generateFrontEndFiles.py
+> cd ..
 ```
 describe howto, paths, nltk setup, ...
 
