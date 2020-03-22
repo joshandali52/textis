@@ -39,11 +39,11 @@ describe howto, paths, nltk setup, ...
 The visualization is implemented as a wep application base on django 3.0. For more details read the official docs (https://docs.djangoproject.com/en/3.0/).
 Change into the following directory:
 ```
-> cd FrontEnd/webapp
+> cd FrontEnd
 ```
 Start the development server locally
 ```
-> python manage.py runserver
+> python webapp/manage.py runserver
 ```
 Open in a web browser the following URL:
 http://127.0.0.1:8000/textis/
