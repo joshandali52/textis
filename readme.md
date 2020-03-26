@@ -1,17 +1,17 @@
 # TextIs
-This is repository for the text mining tool developed to support the curriculum design process described in http://www.curriculum-design.uni.li/. The tool is developed to perform text analysis on a corpus (html files) of online job advertisements. Other types of texts, however, can also be used as valid data source. It is part of the Erasmus+ project ["Text Mining for Curriculum Design for Multiple Information Systems Disciplines"](https://ec.europa.eu/programmes/erasmus-plus/projects/eplus-project-details/#project/2017-1-LI01-KA203-000083).
+The software in this repo supports the curriculum design process using job ad analysis described at http://www.curriculum-design.uni.li/. The tool is developed to perform text analysis on a corpus (html files) of online job advertisements. Other types of texts, however, can also be used as valid data source. It is part of the Erasmus+ project ["Text Mining for Curriculum Design for Multiple Information Systems Disciplines"](https://ec.europa.eu/programmes/erasmus-plus/projects/eplus-project-details/#project/2017-1-LI01-KA203-000083).
 
-We provided two modules: BackEnd and FrontEnd.
+The software contains a web-based frontend and a backend for analysing job ads (html or txt files).
 
-BackEnd codes provide the necessary data (html files) preprocessing and our implementation of the text mining methods (eg. clustering).
+The BackEnd does preprocessing/cleaning and the text mining methods. It provides files used by the FrontEnd
 
-FrontEnd codes provided the means to setup the web application for visualizations to aid the text analysis process of the curriculum design process.
+The FrontEnd is a web application for visualization and query of data from the backend.
 
 TODO: Documentation
 Full documentation of the tool is available at ...
 
 # Installation
-Install python. We developed and tested the project with python3.8:
+Install python 3.6 or higher:
 https://www.python.org/downloads/
 
 It is recommended to create a python virtual environment to use this project:
