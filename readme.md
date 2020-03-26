@@ -1,6 +1,8 @@
 # TextIs
 The software in this repo supports the curriculum design process using job ad analysis described at http://www.curriculum-design.uni.li/. The tool is developed to perform text analysis on a corpus (html files) of online job advertisements. Other types of texts, however, can also be used as valid data source. It is part of the Erasmus+ project ["Text Mining for Curriculum Design for Multiple Information Systems Disciplines"](https://ec.europa.eu/programmes/erasmus-plus/projects/eplus-project-details/#project/2017-1-LI01-KA203-000083).
 
+<img src="logo/erasmus.jpg" width="200">
+
 The software contains a web-based frontend and a backend for analysing job ads (html or txt files).
 
 The BackEnd does preprocessing/cleaning and the text mining methods. It provides files used by the FrontEnd
