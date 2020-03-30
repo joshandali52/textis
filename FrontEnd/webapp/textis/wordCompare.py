@@ -4,7 +4,7 @@ from django.forms import ModelForm
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from FrontEnd.webapp.textis.jobadds import getJobAdds, prepareScatterData
+from FrontEnd.webapp.textis.jobads import getJobAdds, prepareScatterData
 from FrontEnd.webapp.textis.apps import compwords, wToL, wordCounts, wordOcc, association, coitow, longPhrases
 from textis.models import WordCompare
 

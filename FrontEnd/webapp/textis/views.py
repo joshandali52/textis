@@ -8,7 +8,7 @@ from django.shortcuts import render
 # Create your views here.
 from textis.models import Syllables
 from BackEnd.jobads import getTerms
-from FrontEnd.webapp.textis.jobadds import getJobAdds, prepareScatterData
+from FrontEnd.webapp.textis.jobads import getJobAdds, prepareScatterData
 from FrontEnd.webapp.textis.apps import compwords, wToL, longPhrases, wordOcc, association, wordToIndex, coitow, \
 	wordCounts
 from FrontEnd.webapp.textis.wordCompare import getAssociationsAll, precision
