@@ -149,9 +149,9 @@ def getDocPhr(docs, longPhrases, wmap, Config, procID=0, rdocs=0):
                 if len(w):
                     if not w in longPhrases: longPhrases[w] = []    #if len(longPhrases[w]) <longMaxPhrPerWord: longPhrases[w].append((id," ".join(parts[max(0, j - longphrwid):min(len(parts), j + longphrwid + 1)])))
                     if len(longPhrases[w]) < Config.longMaxPhrPerWord:
-                        firstPart = " ".join(parts[max(0, j - Config.longphrwid):j]) %TODO (seems to be empty)
+                        firstPart = " ".join(parts[max(0, j - Config.longphrwid):j]) #TODO (seems to be empty)
                         word = "<b> " + w + " </b>"
-                        secondPart = " ".join(parts[off:min(len(parts), off + Config.longphrwid + 1)]) %TODO (seems to be empty)
+                        secondPart = " ".join(parts[off:min(len(parts), off + Config.longphrwid + 1)]) #TODO (seems to be empty)
                         longPhrases[w].append((docid, firstPart+word+secondPart))    #longPhrases[w].append((id, " ".join(parts[max(0, j - longphrwid):min(len(parts), j + longphrwid + 1)])))
                 j+=1 #was +off before, but this is wrong if words overlap ie. "machine learning" "learning algorithm" is not both detected for machine learnign algorithm
     print("skipped", len(docs)-ndocs, " of ",len(docs))
