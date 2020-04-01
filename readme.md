@@ -24,14 +24,14 @@ Install all packages using pip in the FrontEnd/requirements.txt
 > pip install -r FrontEnd/requirements.txt 
 ```
 
-Open Config.py and set the following path variables:
-
-parserPath Path of the Stanford dependency Parser in Config. Below is an example for Windows 10 systems using anaconda for the Python installation:
+Download and unzip the Stanford CoreNLP parser from https://stanfordnlp.github.io/CoreNLP/download.html to the data folder
 ```
-self.parserPath = r"C:/apps/anaconda3/Lib/site-packages/stanfordcorenlp/"
+cd data
+wget "http://nlp.stanford.edu/software/stanford-corenlp-full-2018-10-05.zip"
+unzip stanford-corenlp-full-2018-10-05.zip
 ```
 
-rpath Path to the raw data. In this repository we provided an example dataset in the data folder and set the rpath variable as follows:
+Open Config.py and set path for the raw data (rpath). In this repository we provided an example dataset in the data folder and set the rpath variable as follows:
 ```
 self.rpath = "../data/"
 ```
