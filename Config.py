@@ -70,7 +70,7 @@ class Cfg:
     self.globalDat="globDat" #sum overall info, eg. #docs
 
     #Stanford Dependency Parser (needed to get compounds), see https://github.com/Lynten/stanford-corenlp
-    self.parserPath = r'C:/apps/anaconda3/Lib/site-packages/stanfordcorenlp/'
+    self.parserPath = r'../data/stanford-corenlp-full-2018-10-05/'
 
     #cooccurrence data
     self.coiTowname = "coiTow" #mapping index to word  for co-occurrence data, e.g. coiTowname[0]="data" meaning that value 0 is mapped to "data"
