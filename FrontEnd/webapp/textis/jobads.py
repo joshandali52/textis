@@ -1,4 +1,12 @@
-from FrontEnd.webapp.textis.apps import longPhrases, Conf, wordCounts
+from FrontEnd.webapp.textis.apps import longPhrases, Conf, wordOcc, wToL
+
+# calculate precision 2 ob b
+def precision(b):
+	i = 2
+	while b * 10 < 1:
+		b = b * 10
+		i = i + 1
+	return i
 
 
 def getJobAdds(lem):
@@ -32,16 +40,30 @@ def prepareScatterData(bars, lem, selectedWord):
 	for word in bars[:50]:
 		if word != '\\':
 			key = word['word']
-			value = word['val']
-			newChild = dict()
-			newChild['word'] = key
-			newChild['size'] = wordCounts[key]
-			newChild['edge'] = value
-			scatterList.append(newChild)
+			# word occurance with precision
+			try:
+				lem1 = wToL[key]
+				b = wordOcc[lem1]
+				i1 = precision(b)
+
+				value = word['val']
+				newChild = dict()
+				newChild['word'] = key
+				newChild['size'] = round(wordOcc[lem1], i1) #wordCounts[key]
+				newChild['edge'] = value
+				scatterList.append(newChild)
+			except:
+				#no data for key word
+				pass
+
 	# add selected word
 	newChild = dict()
+	# word occurance with precision
+	lem1 = wToL[selectedWord]
+	b = wordOcc[lem1]
+	i1 = precision(b)
 	newChild['word'] = selectedWord + "**"
-	newChild['size'] = wordCounts[lem]
+	newChild['size'] = round(wordOcc[lem1], i1)
 	newChild['edge'] = 1
 	scatterList.append(newChild)
 	return scatterList

@@ -4,7 +4,7 @@ from django.forms import ModelForm
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from FrontEnd.webapp.textis.jobads import getJobAdds, prepareScatterData
+from FrontEnd.webapp.textis.jobads import getJobAdds, prepareScatterData, precision
 from FrontEnd.webapp.textis.apps import compwords, wToL, wordCounts, wordOcc, association, coitow, longPhrases
 from textis.models import WordCompare
 
@@ -135,12 +135,3 @@ def compare(request):
 	# return form
 	return HttpResponse(render(request, 'wordcompare.html', context))
 
-
-
-# calculate precision 2 ob b
-def precision(b):
-	i = 2
-	while b * 10 < 1:
-		b = b * 10
-		i = i + 1
-	return i
