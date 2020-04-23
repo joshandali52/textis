@@ -33,11 +33,9 @@ $(document).ready(function () {
     });
 
 
-    var frqString = 'Drag the box on the mini-chart, up and down to see more associated words.​<br>' +
-            '<br>' +
-            'Association Strength measures how much more often the chosen words and the word in the chart co-occur in a small text window of a job ad than expected. A value of 0 indicates tha they never co-occur together. A value of 1 that they always co-occur together.​<br>' +
-            '<br>' +
-            'It can also be seen as a measure for surprise We use PMI (Pointwise mutual information): For two words w1, w2 we compute n(w1,w2)/(n(w1)*n(w2)) , where n(x,y) states how often x and y co-occurred per “text window” of about 2 sentences and n(x) states how often x occurred in all job ads. The disadvantage of the measure is that it might emphasize very rare words too much.​';
+    var frqString = 'Drag the box on the mini-chart, up and down to see more associated words.​\n<br><br>' +
+        'n = denotes the Count/Add, eg. “Machine Learning (n=0.2)” denotes that machine learning occurs in 20% of all ads.\n<br><br>' +
+        'See also help for chart above“Association and frequency “\n<br><br>';
 
     new jBox('Tooltip', {
         attach: '#Tooltip_Ass',
@@ -74,11 +72,9 @@ $(document).ready(function () {
         content: frqString,
     });
 
-    var frqString = 'Drag the box on the mini-chart, up and down to see more associated words.​<br>' +
-            '<br>' +
-            'Drag the box on the mini-chart, up and down to see more associated words.​​<br>' +
-            '<br>' +
-            'The chart focuses on frequent words. It shows 100 most frequent words out of top 1000 strongest associated words. Association strength is defined under help for "TOP ASSOCIATED WORDS \'PYTHON\' WITH FREQUENCY" .';
+    var frqString = 'Drag the box on the mini-chart, up and down to see more associated words.​\n<br><br>' +
+        'n = denotes the association strength, eg. “Machine Learning (n=0.2)” denotes that machine learning occurs in 20% of all ads.\n<br><br>' +
+        'See also help for chart above“Association and frequency “\n';
 
     new jBox('Tooltip', {
         attach: '#Tooltip_Frequency',
@@ -154,6 +150,55 @@ $(document).ready(function () {
         },
         outside: 'x',
         content: compString,
+    });
+
+    var Tooltip_AssFrequString = 'You should focus on words that have large association strength and are frequent. Association strength tells you if a word is strongly related to the given search term. Count/Add (= frequency) tells you if it is often used, ie. if it is important.\n' +
+        '\n<br><br>' +
+        'Association Strength measures how much more often the chosen words and the word in the chart co-occur in a small text window (15 words) of a job ad than expected. It corresponds to the PMI(Pointwise mutual information) value. A value of 0 indicates that they never co-occur together. A value of 1 that they always co-occur together.​ We applied a minimum association strength of 0.5.\n' +
+        '\n<br><br>' +
+        'Count/Add states how often an word occurs on average in a job ad. Words that occur below 30 times are disregarded.\n' +
+        '\n<br><br>' +
+        'The overall number of words is limited to the top 100 associated words.\n';
+
+    new jBox('Tooltip', {
+        attach: '#Tooltip_AssFrequ',
+        theme: 'TooltipBorder',
+        trigger: 'click',
+        width: 400,
+        //height: ($(window).height() - 160),
+        adjustTracker: true,
+        closeOnClick: 'body',
+        closeOnEsc: true,
+        animation: 'move',
+        position: {
+            x: 'right',
+            y: 'center'
+        },
+        outside: 'x',
+        content: Tooltip_AssFrequString,
+    });
+
+    var frqTree= 'The word tree shows associated words based on the PMI measure.\n<br>' +
+        'Words are put together in a branch or node, if they occur very commonly together\n<br>' +
+        'within a few words of each other in job ads.\n<br>' +
+        'The labels of inner nodes are randomly chosen words from lower level nodes.\n';
+
+    new jBox('Tooltip', {
+        attach: '#Tooltip_Tree',
+        theme: 'TooltipBorder',
+        trigger: 'click',
+        width: 400,
+        //height: ($(window).height() - 160),
+        adjustTracker: true,
+        closeOnClick: 'body',
+        closeOnEsc: true,
+        animation: 'move',
+        position: {
+            x: 'right',
+            y: 'center'
+        },
+        outside: 'x',
+        content: frqTree,
     });
 });
 
