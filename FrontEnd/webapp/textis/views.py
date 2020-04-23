@@ -27,6 +27,8 @@ def analyzeSyllables(request):
 	:param request: django request object with request form
 	:return: django rendered html template
 	'''
+	context = {}
+
 	if request.method == "POST":
 		form = syllablesForm(request.POST)
 
@@ -110,6 +112,7 @@ def syllabusSingle(request):
 		'compWords1' : OrderedDict(sorted(newCompWords1.items(), key=lambda x: x[1], reverse=True)),
         'jobads1': jobads1,
 		'wordCounts' : wordCounts,
+		'wordOcc': wordOcc,
 		'scatterList' : scatterList,
 	}
 

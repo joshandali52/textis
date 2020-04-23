@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from FrontEnd.webapp.textis.apps import wToL, longPhrases, assTreeWin, assAbsTreeWin, assTreeDoc, \
-	assAbsTreeDoc, wordCounts, compwords
+	assAbsTreeDoc, wordCounts, compwords, wordOcc
 from textis.models import WordTree
 import json
 
@@ -17,6 +17,7 @@ class wordForm(ModelForm):
 
 
 def tree(request):
+	context = {}
 
 	if request.method == "POST":
 		form = wordForm(request.POST)
@@ -66,6 +67,7 @@ def tree(request):
 					'longPhrases' : longPhrases,
 					'wordCounts' : wordCounts,
 					'compWords': compwords,
+					'wordOcc': wordOcc,
 				}
 			#return results
 			return HttpResponse(render(request, 'treeResults.html', context))

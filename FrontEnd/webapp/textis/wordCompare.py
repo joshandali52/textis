@@ -34,6 +34,8 @@ def compare(request):
 	:param request: django request object with request form
 	:return: django rendered html template
 	'''
+	context = {}
+
 	if request.method == "POST":
 		form = wordForm(request.POST)
 
@@ -123,6 +125,7 @@ def compare(request):
 					'wordCounts': wordCounts,
 					'scatterList1': scatterList1,
 					'scatterList2': scatterList2,
+					'wordOcc': wordOcc,
 				}
 			# return results
 			return HttpResponse(render(request, 'compareResults.html', context))

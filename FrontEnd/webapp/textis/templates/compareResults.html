@@ -325,10 +325,10 @@
 
 
 {% block jscript %}
-    <script src="{% static 'barchart.js' %}"></script>
-    <script src="{% static 'scatter.js' %}"></script>
+    <script src="{% static 'barchart.js' %}?v=1.0.1"></script>
+    <script src="{% static 'scatter.js' %}?v=1.0.1"></script>
     <script src="{% static 'admin/assets/vendor/jbox/dist/jBox.js' %}"></script>
-    <script src="{% static 'admin/assets/vendor/jbox/Demo/Demo.js' %}"></script>
+    <script src="{% static 'admin/assets/vendor/jbox/Demo/Demo.js' %}?v=1.0.1"></script>
 
        <!-- JS Implementing Plugins -->
     <script src="{% static 'assets/vendor/custombox/custombox.min.js' %}"></script>
@@ -349,10 +349,14 @@
     <script>
         var counts = {{ wordCounts|safe }};
 
+        {% if wordOcc %}
+            var wordOcc = {{ wordOcc|safe }};
+        {% endif %}
+
         data_bar1 = [
             {% for value in bar1 %}
                 {% if value.word != '\\' %}
-                    {letter: "{{ value.word }} (n=" + counts['{{ value.word }}'] + ")", col1: {{ value.val }}, col2: {{ value.otherval }}},
+                    {letter: "{{ value.word }} (n=" + wordOcc['{{ value.word }}'] + ")", col1: {{ value.val }}, col2: {{ value.otherval }}},
                 {% endif %}
             {% endfor %}
         ];
@@ -361,7 +365,7 @@
         var data_bar2 = [
             {% for value in bar2 %}
                 {% if value.word != '\\' %}
-                    {letter: "{{ value.word }} (n=" + counts['{{ value.word }}'] + ")", col1: {{ value.val }}, col2: {{ value.otherval }}},
+                    {letter: "{{ value.word }} (n=" + wordOcc['{{ value.word }}'] + ")", col1: {{ value.val }}, col2: {{ value.otherval }}},
                 {% endif %}
             {% endfor %}
         ];
@@ -369,7 +373,7 @@
 
         var data_bar3 = [
             {% for word, count in compWords1.items %}
-                {letter: "{{ word }} (n=" + counts['{{ word }}'] + ")", col1: {{ count }}},
+                {letter: "{{ word }} (n=" + wordOcc['{{ word }}'] + ")", col1: {{ count }}},
             {% endfor %}
         ];
         {% if compWords1|length > 0 %}
@@ -378,7 +382,7 @@
 
         var data_bar4 = [
             {% for word, count in compWords2.items %}
-                {letter: "{{ word }} (n=" + counts['{{ word }}'] + ")", col1: {{ count }}},
+                {letter: "{{ word }} (n=" + wordOcc['{{ word }}'] + ")", col1: {{ count }}},
             {% endfor %}
         ];
         {% if compWords2|length > 0 %}
@@ -388,7 +392,7 @@
         var data_bar1freq = [
             {% for value in bar1 %}
                 {% if value.word != '\\' %}
-                    {letter: "{{ value.word }} (n={{ value.val|format:"{:0.3f}" }})", col1: counts['{{ value.word }}']},
+                    {letter: "{{ value.word }} (n=" + wordOcc['{{ value.word }}'] + ")", col1: counts['{{ value.word }}']},
                 {% endif %}
             {% endfor %}
         ];
@@ -397,7 +401,7 @@
         var data_bar2freq = [
             {% for value in bar2 %}
                 {% if value.word != '\\' %}
-                    {letter: "{{ value.word }} (n={{ value.val|format:"{:0.3f}" }})", col1: counts['{{ value.word }}']},
+                    {letter: "{{ value.word }} (n=" + wordOcc['{{ value.word }}'] + ")", col1: counts['{{ value.word }}']},
                 {% endif %}
             {% endfor %}
         ];

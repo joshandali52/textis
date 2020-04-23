@@ -104,7 +104,7 @@ function createTree(chartcontainer, treeData, phrases, compWords) {
                     }
                     jobads = jobads + "</ul>";
 
-                    div.html("<b>Word count: " + counts[d.name] + "</b><br>" + comps +
+                    div.html("<b>Count/Add: " + wordOcc[d.name] + "</b><br>" + comps +
                         "<br><b>Jobads</b>" + jobads)
                         .style("left", (d3.event.pageX + 20) + "px")
                         .style("top", (d3.event.pageY - 40) + "px");

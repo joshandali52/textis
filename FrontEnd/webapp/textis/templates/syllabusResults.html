@@ -85,10 +85,10 @@
                 <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
                     <div class="media">
                         <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-lightblue-v3 g-mr-10 mb-0">
-                            Compounds containing '{{ word1 }}'</h3>
+                            Association and frequency of '{{ word1 }}'</h3>
                         <div class="media-body d-flex justify-content-end">
                             <a class="target-click u-icon-v2 u-icon-size--sm g-brd-lightblue-v3 g-brd-primary-dark-dark-v1--hover g-color-lightblue-v3 g-color-primary--hover g-rounded-50x"
-                               href="#!" id="Tooltip_Compounds">
+                               href="#!" id="Tooltip_AssFrequ">
                                 <i class="hs-admin-help"></i>
                             </a>
                         </div>
@@ -219,10 +219,10 @@
     <!-- documentation see here: http://blockbuilder.org/ufenegga/65931549f39f4a0d5249366581157fb1 -->
     <script src="//d3js.org/d3.v3.min.js"></script>
 
-    <script src="{% static 'barchart.js' %}"></script>
-    <script src="{% static 'scatter.js' %}"></script>
+    <script src="{% static 'barchart.js' %}?v=1.0.1"></script>
+    <script src="{% static 'scatter.js' %}?v=1.0.1"></script>
     <script src="{% static 'admin/assets/vendor/jbox/dist/jBox.js' %}"></script>
-    <script src="{% static 'admin/assets/vendor/jbox/Demo/Demo.js' %}"></script>
+    <script src="{% static 'admin/assets/vendor/jbox/Demo/Demo.js' %}?v=1.0.1"></script>
 
     <!-- JS Implementing Plugins -->
     <script src="{% static 'assets/vendor/custombox/custombox.min.js' %}"></script>
@@ -248,11 +248,15 @@
             var counts = {{ wordCounts|safe }};
         {% endif %}
 
+        {% if wordOcc %}
+            var wordOcc = {{ wordOcc|safe }};
+        {% endif %}
+
         data_bar1 = [
             {% for value in bar1 %}
                 {% if value.word != '\\' %}
                 {
-                    letter: "{{ value.word }} (n=" + counts['{{ value.word }}'] + ")",
+                    letter: "{{ value.word }} (n=" + wordOcc['{{ value.word }}'] + ")",
                     col1: {{ value.val }},
                     col2: {{ value.otherval }}
                 },
@@ -264,7 +268,7 @@
         var data_bar3 = [
             {% for word, count in compWords1.items %}
                 {% if value.word != '\\' %}
-                    {letter: "{{ word }} (n=" + counts['{{ word }}'] + ")", col1: {{ count }}},
+                    {letter: "{{ word }} (n=" + wordOcc['{{ word }}'] + ")", col1: {{ count }}},
                 {% endif %}
             {% endfor %}
         ];
@@ -275,20 +279,11 @@
         var data_bar1freq = [
             {% for value in bar1 %}
                 {% if value.word != '\\' %}
-                    {letter: "{{ value.word }} (n={{ value.val|format:"{:0.3f}" }})", col1: counts['{{ value.word }}']},
+                    {letter: "{{ value.word }} (n=" + wordOcc['{{ value.word }}'] + ")", col1: counts['{{ value.word }}']},
                 {% endif %}
             {% endfor %}
         ];
         newBarChart(data_bar1freq, "chart1freq", "bar1");
-
-        var data_bar1freq = [
-            {% for value in bar1 %}
-                {% if value.word != '\\' %}
-                    {letter: "{{ value.word }} (n={{ value.val|format:"{:0.3f}" }})", col1: counts['{{ value.word }}']},
-                {% endif %}
-            {% endfor %}
-        ];
-
 
         var data_scatter = [
             {% for value in scatterList %}

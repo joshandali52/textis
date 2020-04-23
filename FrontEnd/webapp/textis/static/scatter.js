@@ -17,11 +17,11 @@ function textisscatterd3(data, targetDiv) {
     var xValue = function (d) {
             return d.size;
         }, // data -> value
-        xScale = d3.scale.linear().range([0, width]), // value -> display
+        xScale = d3.scale.log().base(2).range([0, width]), // value -> display
         xMap = function (d) {
             return xScale(xValue(d));
         }, // data -> display
-        xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+        xAxis = d3.svg.axis().scale(xScale).orient("bottom").tickFormat(d3.format(".2f"));
 
 // setup y
     var yValue = function (d) {
@@ -46,7 +46,7 @@ function textisscatterd3(data, targetDiv) {
 
 
     // don't want dots overlapping axis, so add in buffer to data domain
-    xScale.domain([0, d3.max(data, xValue)]);
+    xScale.domain([d3.min(data, xValue), d3.max(data, xValue) + 1]);
     yScale.domain([0.35, d3.max(data, yValue)]);
 
     // x-axis
