@@ -1,4 +1,5 @@
-from FrontEnd.webapp.textis.apps import longPhrases, Conf, wordOcc, wToL
+from FrontEnd.webapp.textis.apps import longPhrases, Conf, wordOcc, wToL, wordCounts
+
 
 # calculate precision 2 ob b
 def precision(b):
