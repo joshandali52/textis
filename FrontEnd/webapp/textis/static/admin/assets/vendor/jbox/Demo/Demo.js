@@ -73,7 +73,7 @@ $(document).ready(function () {
     });
 
     var frqString = 'Drag the box on the mini-chart, up and down to see more associated words.​\n<br><br>' +
-        'n = denotes the association strength, eg. “Machine Learning (n=0.2)” denotes that machine learning occurs in 20% of all ads.\n<br><br>' +
+        'n = denotes the association strength.\n<br><br>' +
         'See also help for chart above“Association and frequency “\n';
 
     new jBox('Tooltip', {

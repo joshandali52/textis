@@ -222,7 +222,7 @@
     <script src="{% static 'barchart.js' %}?v=1.0.1"></script>
     <script src="{% static 'scatter.js' %}?v=1.0.1"></script>
     <script src="{% static 'admin/assets/vendor/jbox/dist/jBox.js' %}"></script>
-    <script src="{% static 'admin/assets/vendor/jbox/Demo/Demo.js' %}?v=1.0.1"></script>
+    <script src="{% static 'admin/assets/vendor/jbox/Demo/Demo.js' %}?v=1.0.2"></script>
 
     <!-- JS Implementing Plugins -->
     <script src="{% static 'assets/vendor/custombox/custombox.min.js' %}"></script>
@@ -256,7 +256,7 @@
             {% for value in bar1 %}
                 {% if value.word != '\\' %}
                 {
-                    letter: "{{ value.word }} (n=" + wordOcc['{{ value.word }}'] + ")",
+                    letter: "{{ value.word }} (n=" + wordOcc['{{ value.word }}'].toFixed(2) + ")",
                     col1: {{ value.val }},
                     col2: {{ value.otherval }}
                 },
@@ -268,7 +268,7 @@
         var data_bar3 = [
             {% for word, count in compWords1.items %}
                 {% if value.word != '\\' %}
-                    {letter: "{{ word }} (n=" + wordOcc['{{ word }}'] + ")", col1: {{ count }}},
+                    {letter: "{{ word }} (n=" + wordOcc['{{ word }}'].toFixed(2) + ")", col1: {{ count }}},
                 {% endif %}
             {% endfor %}
         ];
@@ -279,7 +279,7 @@
         var data_bar1freq = [
             {% for value in bar1 %}
                 {% if value.word != '\\' %}
-                    {letter: "{{ value.word }} (n=" + wordOcc['{{ value.word }}'] + ")", col1: counts['{{ value.word }}']},
+                    {letter: "{{ value.word }} (n=" + wordOcc['{{ value.word }}'].toFixed(2) + ")", col1: counts['{{ value.word }}']},
                 {% endif %}
             {% endfor %}
         ];
