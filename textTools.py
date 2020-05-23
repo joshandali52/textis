@@ -6,7 +6,10 @@
 @license : Academic Free License ("AFL") v. 3.0
 
 When using (any part) of this software, please cite our paper:
-[JOBADS PAPER] 
+Handali, Joshua Peter; Schneider, Johannes; Dennehy, Denis; Hoffmeister, Benedikt; Conboy, Kieran; and Becker, Jörg. (2020).
+"INDUSTRY DEMAND FOR ANALYTICS: A LONGITUDINAL STUDY"
+European Conference on Information Systems (ECIS).
+https://aisel.aisnet.org/ecis2020_rp/11
 """
 
 # Python libs
