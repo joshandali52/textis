@@ -1,0 +1,108 @@
+{% extends 'designer/templates/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h1 class="g-font-weight-300 g-font-size-32 g-color-black g-mb-10">4.2 Evaluate Curriculum</h1>
+
+
+    <div class="row">
+        <div class="col-md-7">
+            <!-- Panel -->
+            <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-black g-mr-10 mb-0">
+                            About this Phase</h3>
+                    </div>
+                </header>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">Based on the reactions from the stakeholders involved or affected by the new curriculum design, you should set up a structured evaluation building on top of this initial comments, that might emerge from the prior step.</p>
+                </div>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">In order to fully evaluate the design you might consider multiple options. Of course, the most realistic and valuable means of evaluation is the actual run of a pilot. Deploying the full curriculum as a test run, though, might be infeasible based on examination regulations, lack of skilled researches and lacking long-term preparation for holding new courses.  Of course these options are influenced by the degree of change that has been imposed on the curriculum. In case of only minor changes, you might have no problems in running a new module, or even only a single lecture within a module of your new curriculum.</p>
+                </div>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">A second means of evaluating the curriculum can be found in expert and stakeholder discussions. This can be set up as larger workshops including discussions and open questions addressing the new curriculum. The stakeholders involved should be invited to such rounds, just as representatives of stakeholders that are affected by the curriculum.</p>
+                </div>
+
+            </div>
+            <!-- End Panel Content -->
+
+            <!-- Panel References -->
+            <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-black g-mr-10 mb-0">
+                           References</h3>
+                    </div>
+                </header>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <ul class="g-font-weight-300 g-color-gray-dark-v6 mb-0">
+                        <li>Zhao, D.; Ma, X.; Qiao, S. (2016): <a href="https://www.sciencedirect.com/science/article/abs/pii/S0191491X16300281" target="_blank">What aspects should be evaluated when evaluating graduate curriculum: Analysis based on student interview</a>. Studies in Educational Evaluation 54.</li>
+                        <li>Matkovic, Predrag; Tumbas, Pere; Sakal, Marton; Pavlićević, Veselin (2014): <a href="https://www.researchgate.net/publication/272294393_University_Stakeholders_in_the_Analysis_Phase_of_Curriculum_Development_Process_Model" target="_blank">Stakeholders in the Analysis Phase of Curriculum Development Process Model.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End Panel References-->
+        </div>
+        <!-- Info Image -->
+        <div class="col-md-5 g-min-height-360 g-bg-size-cover g-bg-pos-center" data-bg-img-src="{% static 'assets/images/4_2_Evaluate_Curriculum.jpg' %}"></div>
+        <!-- End Info Image -->
+    </div>
+
+    <div class="row">
+        <div class="col-md-7">
+            <!-- Basic Text Inputs -->
+            <div class="card g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-20--md g-mb-30">
+                <header class="card-header g-bg-transparent g-brd-bottom-none">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-black g-mr-10 mb-0">
+                           Things to consider</h3>
+                    </div>
+                </header>
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- Columned Checkboxes -->
+                    <div class="row g-mb-30">
+                        <!-- Left Column -->
+                        <div class="col-md-12">
+                            <div class="form-group g-mb-10">
+                                <label class="u-check g-pl-25">
+                                    <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox"
+                                           {% if properties.form42_1 %}checked{% endif %}
+                                           {% if not user.is_authenticated %}disabled{% endif %}
+                                           name="form42s_1">
+                                    <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                                        <i class="fa" data-check-icon=""></i>
+                                    </div>
+                                    Feedback on the new curriculum has been gathered e.g. by means of implementing a pilot or consulting external institutions and experts to receive an extensive evaluation.
+                                </label>
+                            </div>
+                        </div>
+                        <!-- End Left Column -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% if user.is_authenticated %}
+                                <input type="submit" class="btn btn-md btn-primary pull-right" value="Save">
+                            {% else %}
+                                <div class="pull-right">
+                                    <a href="/login" class="btn btn-primary">Login</a><span> to make changes...</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </form>
+                <!-- End With Button (Colorful BG) -->
+            </div>
+            <!-- End Basic Text Inputs -->
+            {% include 'navigation.html' %}
+        </div>
+    </div>
+
+{% endblock %}

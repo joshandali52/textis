@@ -1,0 +1,133 @@
+{% extends 'designer/templates/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h1 class="g-font-weight-300 g-font-size-32 g-color-black g-mb-10">3.1 Select Content</h1>
+
+
+    <div class="row">
+        <div class="col-md-7">
+            <!-- Panel -->
+            <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-black g-mr-10 mb-0">
+                            About this Phase</h3>
+                    </div>
+                </header>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">At first, the insights and gaps revealed in Phase 2 have to be translated by your CDP team in order to allow for a discussion on new contents that might become relevant to your curriculum. While the activities in Phase 2 indicate potential gaps, e.g. a lack of certain technologies that are requested by practice but do not show up in your curriculum.</p>
+                </div>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">However, these discussion on potentially relevant content shall always be backed by your rationale and the eventual goal of your institution. The discussion within your teams has to consider questions such as:</p>
+                </div>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <ul class="g-font-weight-300 g-color-gray-dark-v6 mb-0">
+                        <li>What content can fill the gap(s) identified by the curriculum analysis?</li>
+                        <li>Does this content prove to comply with the rationale of the curriculum / the institution?</li>
+                        <li>Is the new content a temporary development that might be irrelevant in the near future?</li>
+                    </ul>
+                </div>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">At the end of your discussion you should agree on a list of relevant content that might enhance your given curriculum or constitute the new curriculum. In alignment with these contents a clear link to the learning objectives of your curriculum has to be established. Which objectives are achieved through the inclusion of the specific content?</p>
+                </div>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0"><b>Note:</b> For the given prototype, the tool is assessing job ads from the field of Data Science. The applicability is so for only given for related programmes. Yet, the applicability can be expanded by means of integrating different sources from different fields of job types.</p>
+                </div>
+            </div>
+            <!-- End Panel Content -->
+
+            <!-- Panel References -->
+            <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-black g-mr-10 mb-0">
+                           References</h3>
+                    </div>
+                </header>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <ul class="g-font-weight-300 g-color-gray-dark-v6 mb-0">
+                        <li>Taba, H. (1962): <a href="https://www.worldcat.org/title/curriculum-development-theory-and-practice/oclc/176063" target="_blank">Curriculum Development: Theory and Practice</a>. New York, NY: Harcourt, Brace & World.</li>
+                        <li>Matkovic, Predrag; Tumbas, Pere; Sakal, Marton; Pavlićević, Veselin (2014): <a href="https://www.researchgate.net/publication/272294393_University_Stakeholders_in_the_Analysis_Phase_of_Curriculum_Development_Process_Model" target="_blank">Stakeholders in the Analysis Phase of Curriculum Development Process Model.</a></li>
+                        <li>Richards, Jack C. (1984): <a href="https://doi.org/10.1177/003368828401500101" target="_blank">Language Curriculum Development.</a></li>
+                        <li>Stanley, Angela Fowler (2009): <a href="https://getd.libs.uga.edu/pdfs/stanley_angela_f_200912_edd.pdf" target="_blank">The Tyler Rationale and the Ralph Tyler Project: An Historical Reconsideration. Dissertation. University of Georgia, Georgia. Graduate Faculty.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End Panel References-->
+        </div>
+        <!-- Info Image -->
+        <div class="col-md-5 g-min-height-360 g-bg-size-cover g-bg-pos-center" data-bg-img-src="{% static 'assets/images/3_1_Select_Content.jpg' %}"></div>
+        <!-- End Info Image -->
+    </div>
+
+    <div class="row">
+        <div class="col-md-7">
+            <!-- Basic Text Inputs -->
+            <div class="card g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-20--md g-mb-30">
+                <header class="card-header g-bg-transparent g-brd-bottom-none">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-black g-mr-10 mb-0">
+                           Things to consider</h3>
+                    </div>
+                </header>
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- Columned Checkboxes -->
+                    <div class="row g-mb-30">
+                        <!-- Left Column -->
+                        <div class="col-md-12">
+                            <div class="form-group g-mb-10">
+                                <label class="u-check g-pl-25">
+                                    <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox"
+                                           {% if properties.form31_1 %}checked{% endif %}
+                                           {% if not user.is_authenticated %}disabled{% endif %}
+                                           name="form31_1">
+                                    <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                                        <i class="fa" data-check-icon=""></i>
+                                    </div>
+                                    A list of content to be added to the curriculum has been discussed and agreed upon among all affected stakeholders.
+                                </label>
+                            </div>
+                            <div class="form-group g-mb-10">
+                                <label class="u-check g-pl-25">
+                                    <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox"
+                                           {% if properties.form31_2 %}checked{% endif %}
+                                           {% if not user.is_authenticated %}disabled{% endif %}
+                                           name="form31_2">
+                                    <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                                        <i class="fa" data-check-icon=""></i>
+                                    </div>
+                                    A clear link between the new contents and the overarching objectives has been established.
+                                </label>
+                            </div>
+                        </div>
+                        <!-- End Left Column -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% if user.is_authenticated %}
+                                <input type="submit" class="btn btn-md btn-primary pull-right" value="Save">
+                            {% else %}
+                                <div class="pull-right">
+                                    <a href="/login" class="btn btn-primary">Login</a><span> to make changes...</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </form>
+                <!-- End With Button (Colorful BG) -->
+            </div>
+            <!-- End Basic Text Inputs -->
+            {% include 'navigation.html' %}
+        </div>
+    </div>
+
+{% endblock %}

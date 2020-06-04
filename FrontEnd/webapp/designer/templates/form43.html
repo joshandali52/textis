@@ -1,0 +1,110 @@
+{% extends 'designer/templates/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h1 class="g-font-weight-300 g-font-size-32 g-color-black g-mb-10">4.3 Set Up CDP Continuity</h1>
+
+
+    <div class="row">
+        <div class="col-md-7">
+            <!-- Panel -->
+            <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-black g-mr-10 mb-0">
+                            About this Phase</h3>
+                    </div>
+                </header>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">Reaching this point of the CDP, you have not only considered revising or creating a new curriculum, but also informed yourself about new topics and trends emerging in industry. Furthermore, you have searched for new means to integrate topical and relevant learning objectives into the new curriculum. Within the last steps, you have communicated the results and initiated a pilot or evaluated the curriculum by means of discussions rounds with experts and stakeholders affected by the new curriculum.</p>
+                </div>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">Within all these prior steps, you have taken on a new perspective on your curriculum. Instead of portraying a curriculum as a fixed document, that can be left untouched once completed, you have come to view the curriculum as a dynamic document that is subject to ongoing evolutionary processes. Instead of becoming obsolete and revising the curriculum after years without any change, you should continuously check and adapt your curriculum.</p>
+                </div>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">For this reason, it is important to set up a continuous plan to use this tool and check, whether the content and objectives of your curriculum hold up with ongoing developments in practice and academia. Such a plan should include concrete persons, responsible for performing these checks. Furthermore, you should think of the evaluation intervals, e.g. performing a rough check after every term, or revising each module once a year. In any case, you should be open to revising and changing your curriculum if any of the reasons for change, discussed in step <a href="/form11">1.1</a> emerge.</p>
+                </div>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0"><b>Note:</b> Although this CDP is depicted as a linear sequence of steps, feel free to reiterate and jump directly into phases, such as Informing or Integrating. Given the use of the text-mining based approaches, this allows for a quick check for topicality or relevance, as well as the discovery of new topics.</p>
+                </div>
+            </div>
+            <!-- End Panel Content -->
+
+            <!-- Panel References -->
+            <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-black g-mr-10 mb-0">
+                           References</h3>
+                    </div>
+                </header>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <ul class="g-font-weight-300 g-color-gray-dark-v6 mb-0">
+                        <li>Matkovic, Predrag; Tumbas, Pere; Sakal, Marton; Pavlićević, Veselin (2014): <a href="https://www.researchgate.net/publication/272294393_University_Stakeholders_in_the_Analysis_Phase_of_Curriculum_Development_Process_Model" target="_blank">Stakeholders in the Analysis Phase of Curriculum Development Process Model.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- End Panel References-->
+        </div>
+        <!-- Info Image -->
+        <div class="col-md-5 g-min-height-360 g-bg-size-cover g-bg-pos-center" data-bg-img-src="{% static 'assets/images/4_3_Set_Up_CDP_Continuity.jpg' %}"></div>
+        <!-- End Info Image -->
+    </div>
+
+    <div class="row">
+        <div class="col-md-7">
+            <!-- Basic Text Inputs -->
+            <div class="card g-brd-around g-brd-gray-light-v7 g-rounded-4 g-pa-15 g-pa-20--md g-mb-30">
+                <header class="card-header g-bg-transparent g-brd-bottom-none">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-black g-mr-10 mb-0">
+                           Things to consider</h3>
+                    </div>
+                </header>
+                <form method="post">
+                    {% csrf_token %}
+                    <!-- Columned Checkboxes -->
+                    <div class="row g-mb-30">
+                        <!-- Left Column -->
+                        <div class="col-md-12">
+                            <div class="form-group g-mb-10">
+                                <label class="u-check g-pl-25">
+                                    <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox"
+                                           {% if properties.form43_1 %}checked{% endif %}
+                                           {% if not user.is_authenticated %}disabled{% endif %}
+                                           name="form43_1">
+                                    <div class="u-check-icon-checkbox-v4 g-absolute-centered--y g-left-0">
+                                        <i class="fa" data-check-icon=""></i>
+                                    </div>
+                                    A plan has been set up to allow for a steady and continous evaluation and improvement of the curriculum.
+                                </label>
+                            </div>
+                        </div>
+                        <!-- End Left Column -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% if user.is_authenticated %}
+                                <input type="submit" class="btn btn-md btn-primary pull-right" value="Save">
+                            {% else %}
+                                <div class="pull-right">
+                                    <a href="/login" class="btn btn-primary">Login</a><span> to make changes...</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </form>
+                <!-- End With Button (Colorful BG) -->
+            </div>
+            <!-- End Basic Text Inputs -->
+            {% include 'navigation.html' %}
+        </div>
+    </div>
+
+{% endblock %}

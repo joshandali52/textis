@@ -1,0 +1,61 @@
+{% extends 'designer/templates/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h1 class="g-font-weight-300 g-font-size-32 g-color-black g-mb-10">Welcome to MyCDP!</h1>
+    <!-- h3 class="g-font-weight-300 g-font-size-20 g-color-black g-mb-40">Subheading for the Landing Page</h3 -->
+
+
+    <div class="row">
+        <div class="col-md-7">
+            <!-- Panel -->
+            <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-black g-mr-10 mb-0">
+                            About MyCDP</h3>
+                    </div>
+                </header>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <!-- h4 class="g-font-weight-300 g-font-size-18 g-font-size-22--md g-color-black g-mb-10">Basic
+                        Panel</h4 -->
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">Welcome to our Curriculum Design Process, which is supported by cutting-edge technology and scientifically grounded! Our four process steps will support you in interactively getting inspired, reflecting on, and designing your Curriculum. Each step in the process will be supported by our novel software for automating many labour-intensive processes, check lists, external services, additional literature that describe the rationale behind each activity, and! Furthermore, we will provide you with readings for getting into the topic as deeply as you like!</p>
+                </div>
+
+            </div>
+            <!-- End Panel -->
+
+            <!-- Panel -->
+            <div class="card g-brd-gray-light-v7 g-rounded-3 g-mb-30">
+                <header class="card-header g-bg-transparent g-brd-bottom-none g-px-15 g-px-30--sm g-pt-15 g-pt-25--sm pb-0">
+                    <div class="media">
+                        <h3 class="d-flex align-self-center text-uppercase g-font-size-12 g-font-size-default--md g-color-black g-mr-10 mb-0">
+                            What would you like to do?</h3>
+                    </div>
+                </header>
+
+                <div class="card-block g-px-15 g-px-30--sm g-py-10 g-py-15--sm">
+                    <!-- h4 class="g-font-weight-300 g-font-size-18 g-font-size-22--md g-color-black g-mb-10">Basic
+                        Panel</h4 -->
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">You can start from scratch, creating a new Curriculum for your field. This process will most likely take months, even years, as it involves many stakeholders and many points to consider that depend on each other. We recommend creating a user account to save your progress. You can start your journey here.</p>
+
+                    <p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">You can update your current Curriculum and check if the market might require different skills than you currently teach. This approach skips many of the steps required for designing a new Curriculum, but still might take some time. We again recommend creating a user account for this.</p>
+
+<p class="g-font-weight-300 g-color-gray-dark-v6 mb-0">You can play around with our tools to get some quick information about your modules or keywords you are interested in.
+</p>
+                </div>
+
+            </div>
+            <!-- End Panel -->
+
+        </div>
+
+        <!-- Info Image -->
+      <div class="col-md-5 g-min-height-360 g-bg-size-cover g-bg-pos-center" data-bg-img-src="{% static 'assets/images/library.jpg' %}"></div>
+      <!-- End Info Image -->
+
+    </div>
+
+{% endblock %}

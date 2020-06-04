@@ -1,0 +1,14 @@
+{% extends "mail/base.html" %}
+{% load i18n %}
+
+{% block content %}
+You got a message from '{{ name }}'{% if from != None %}, reply to '{{ from }}'{% endif %}.
+<br>
+<br>
+{{ message }}
+<br>
+<br>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
