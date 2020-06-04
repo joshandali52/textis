@@ -25,9 +25,9 @@ SECRET_KEY = 'b-6g2o(4%ye%alrxqlm^@7^@bx0_w%x#z^#wq(t9lerfnhl+0x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '193.5.27.56', 'mycdp.eu', 'www.mycdp.eu']
 
-ADMINS = [('Your Name', 'your.email@gmail.com')]
+ADMINS = [('Michi', 'michael.gau@gmail.com')]
 
 # Application definition
 
