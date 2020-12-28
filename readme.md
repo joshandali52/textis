@@ -9,8 +9,6 @@ The BackEnd does preprocessing/cleaning and the text mining methods. It provides
 
 The FrontEnd is a web application for visualization and query of data from the backend.
 
-TODO: Documentation
-Full documentation of the tool is available at ...
 
 # Installation
 Install python 3.6 or higher:
